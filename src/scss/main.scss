@@ -1,0 +1,80 @@
+.en__contacts {
+  display: none;
+}
+#ecard-list {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    li {
+      width: 93px;
+      height: 93px;
+      position: relative;
+      cursor: pointer;
+      border: 2px solid transparent;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0.5;
+      }
+      .recipient-name {
+        position: absolute;
+        bottom: 4px;
+        left: 4px;
+        font-size: 16px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1;
+        background-color: #fff;
+        color: #000;
+        z-index: 1;
+        padding: 2px;
+      }
+      .checked-mark {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        border-radius: 50%;
+        background-color: #007cf9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 4px;
+        left: 4px;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      &:hover,
+      &.active {
+        border: 2px solid #007cf9;
+        img {
+          opacity: 1;
+        }
+      }
+      &.active {
+        .checked-mark {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+[data-engrid-theme="flex2"] .page-backgroundImage:before {
+  background-position: 550px center;
+  transition: background-image 0.5s ease-in-out;
+}
+.selected-recipients {
+  font-weight: 700;
+}
