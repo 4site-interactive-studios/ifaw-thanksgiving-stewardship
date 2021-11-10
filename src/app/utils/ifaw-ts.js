@@ -96,18 +96,27 @@ export class IFAWts {
     const selectedRecipients = document.querySelectorAll(
       ".en__contacts input:checked"
     );
-    let selectedRecipientsHtml = [];
-    selectedRecipients.forEach((element) => {
-      const recipientIntex = [...this.recipientsContainer.children].indexOf(
-        element.closest(".en__contact")
-      );
-      const recipientName = document
-        .querySelector("#ecard-list ul")
-        .children[recipientIntex].querySelector(".recipient-name").innerText;
-      selectedRecipientsHtml.push(recipientName);
-    });
-    let selectedRecipientsText = selectedRecipientsHtml.join(", ");
-    document.querySelector(".selected-recipients").innerText =
-      selectedRecipientsText;
+    if (selectedRecipients.length > 0) {
+      let selectedRecipientsHtml = [];
+      selectedRecipients.forEach((element) => {
+        const recipientIntex = [...this.recipientsContainer.children].indexOf(
+          element.closest(".en__contact")
+        );
+        const recipientName = document
+          .querySelector("#ecard-list ul")
+          .children[recipientIntex].querySelector(".recipient-name").innerText;
+        selectedRecipientsHtml.push(recipientName);
+      });
+      let selectedRecipientsText = selectedRecipientsHtml.join(", ");
+      document.querySelector("#dyanmic-recipient-headline").innerHTML =
+        "To <span class='selected-recipients'>" +
+        selectedRecipientsText +
+        "</span> @ IFAW";
+      document.querySelector(".en__submit button").disabled = false;
+    } else {
+      document.querySelector("#dyanmic-recipient-headline").innerHTML =
+        "Choose your recipient";
+      document.querySelector(".en__submit button").disabled = true;
+    }
   }
 }

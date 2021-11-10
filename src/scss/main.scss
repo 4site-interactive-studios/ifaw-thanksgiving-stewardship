@@ -6,10 +6,9 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-gap: 6px;
+    grid-template-columns: repeat(auto-fit, 93px);
 
     li {
       width: 93px;
