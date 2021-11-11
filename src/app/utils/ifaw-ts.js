@@ -61,12 +61,10 @@ export class IFAWts {
     checkBox.checked = !checkBox.checked;
     if (checkBox.checked) {
       clickedElement.classList.add("active");
-      const eCardBackgroundDiv = document.querySelector(
-        ".page-backgroundImage"
-      );
+      const eCardBackgroundDiv = document.querySelector(".content-wrapper");
       const img = clickedElement.querySelector("img").src;
       eCardBackgroundDiv.style.setProperty(
-        "--engrid__page-backgroundImage_url",
+        "background-image",
         "url('" + img + "')"
       );
     } else {
@@ -85,10 +83,10 @@ export class IFAWts {
     const clickedElement =
       document.querySelector("#ecard-list ul").children[randomIndex];
     clickedElement.classList.add("active");
-    const eCardBackgroundDiv = document.querySelector(".page-backgroundImage");
+    const eCardBackgroundDiv = document.querySelector(".content-wrapper");
     const img = clickedElement.querySelector("img").src;
     eCardBackgroundDiv.style.setProperty(
-      "--engrid__page-backgroundImage_url",
+      "background-image",
       "url('" + img + "')"
     );
   }
