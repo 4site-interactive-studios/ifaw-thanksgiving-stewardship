@@ -2,6 +2,8 @@
   display: none;
 }
 #ecard-list {
+  margin-top: 20px;
+
   ul {
     list-style-type: none;
     padding: 0;
@@ -23,7 +25,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        z-index: -1;
+        // z-index: -1;
         opacity: 0.5;
       }
       .recipient-name {
@@ -39,6 +41,7 @@
         color: #000;
         z-index: 1;
         padding: 2px;
+        width: calc(100% - 8px);
       }
       .checked-mark {
         width: 16px;
@@ -70,10 +73,37 @@
     }
   }
 }
-[data-engrid-theme="flex2"] .page-backgroundImage:before {
-  background-position: 550px center;
-  transition: background-image 0.5s ease-in-out;
-}
+
+// [data-engrid-theme="flex2"] .page-backgroundImage:before {
+//   background-position: 550px center;
+//   transition: background-image 0.5s ease-in-out;
+// }
 .selected-recipients {
   font-weight: 700;
+}
+
+#dyanmic-recipient-headline {
+  margin-bottom: 0px;
+}
+
+.form-column {
+  margin-bottom: 0px;
+}
+
+.custom-styling .en__component--formblock {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+button[disabled],
+button[disabled]:hover,
+button[disabled]:focus,
+button[disabled]:active {
+  background-color: #007cf9;
+  filter: grayscale(1);
+  cursor: not-allowed;
+}
+
+.en__component--socialshareblock {
+  display: none;
 }
