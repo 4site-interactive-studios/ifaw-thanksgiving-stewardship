@@ -28,9 +28,9 @@ export class IFAWts {
         let recipientClass = recipientName.replace(" ", "-").toLowerCase();
         ecardListHtml += `<li class="card ${recipientClass}">
         <img src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1720/ts-${recipientClass}.jpg" alt="${recipientName}">
-        <span class="recipient-name">${recipientName
-          .split(" ")
-          .slice(-1)}</span>
+        <span class="recipient-name">${this.translate(
+          recipientName.split(" ").slice(-1)
+        )}</span>
           <span class="checked-mark">
             <svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M6.736 0 2.948 3.6 1.264 2 0 3.2l2.526 2.4.422.4L8 1.2 6.736 0z" fill="#fff"/>
@@ -113,8 +113,47 @@ export class IFAWts {
       document.querySelector(".en__submit button").disabled = false;
     } else {
       document.querySelector("#dyanmic-recipient-headline").innerHTML =
-        "Choose your recipient";
+        this.translate("Choose your recipient");
       document.querySelector(".en__submit button").disabled = true;
     }
+  }
+  translate(what, to = "en-US") {
+    if (
+      window.hasOwnProperty("pageJson") &&
+      window.pageJson.hasOwnProperty("locale")
+    ) {
+      to = window.pageJson.locale;
+    }
+    const translations = {
+      "en-US": {
+        "Choose your recipient": "Choose your recipient",
+        Vets: "Vets",
+        Carers: "Carers",
+        Rescuers: "Rescuers",
+        Rangers: "Rangers",
+      },
+      "de-DE": {
+        "Choose your recipient": "Wähle deinen Empfänger",
+        Vets: "Veterinäre",
+        Carers: "Pfleger",
+        Rescuers: "Räuber",
+        Rangers: "Ranger",
+      },
+      "fr-FR": {
+        "Choose your recipient": "Choisissez votre destinataire",
+        Vets: "Vétérinaires",
+        Carers: "Pilotes",
+        Rescuers: "Réparateurs",
+        Rangers: "Rangers",
+      },
+      "nl-NL": {
+        "Choose your recipient": "Kies uw ontvanger",
+        Vets: "Ziekenhuisartsen",
+        Carers: "Verzorgers",
+        Rescuers: "Rescue",
+        Rangers: "Rangers",
+      },
+    };
+    return translations[to][what];
   }
 }
