@@ -107,7 +107,8 @@ export class IFAWts {
       });
       let selectedRecipientsText = selectedRecipientsHtml.join(", ");
       document.querySelector("#dyanmic-recipient-headline").innerHTML =
-        "To <span class='selected-recipients'>" +
+        this.translate("To") +
+        " <span class='selected-recipients'>" +
         selectedRecipientsText +
         "</span> @ IFAW";
       document.querySelector(".en__submit button").disabled = false;
@@ -126,6 +127,7 @@ export class IFAWts {
     }
     const translations = {
       "en-US": {
+        To: "To",
         "Choose your recipient": "Choose your recipient",
         Vets: "Vets",
         Carers: "Carers",
@@ -133,24 +135,28 @@ export class IFAWts {
         Rangers: "Rangers",
       },
       "de-DE": {
-        "Choose your recipient": "Wähle deinen Empfänger",
-        Vets: "Veterinäre",
-        Carers: "Pfleger",
-        Rescuers: "Räuber",
-        Rangers: "Ranger",
+        To: "An",
+        "Choose your recipient":
+          "Wählen Sie die Empfänger (Mehrfachauswahl möglich)",
+        Vets: "Veterinärteam",
+        Carers: "Pflegeteam",
+        Rescuers: "Tierrettung",
+        Rangers: "Rangerteam",
       },
       "fr-FR": {
-        "Choose your recipient": "Choisissez votre destinataire",
-        Vets: "Vétérinaires",
-        Carers: "Pilotes",
-        Rescuers: "Réparateurs",
-        Rangers: "Rangers",
+        To: "Pour",
+        "Choose your recipient": "Choisissez les destinataires",
+        Vets: "Les vétérinaires",
+        Carers: "Les soigneurs",
+        Rescuers: "Les sauveteurs",
+        Rangers: "Les écogardes",
       },
       "nl-NL": {
-        "Choose your recipient": "Kies uw ontvanger",
-        Vets: "Ziekenhuisartsen",
+        To: "Aan",
+        "Choose your recipient": "Kies wie jouw bedankje ontvangt",
+        Vets: "Dierenartsen",
         Carers: "Verzorgers",
-        Rescuers: "Rescue",
+        Rescuers: "Redders",
         Rangers: "Rangers",
       },
     };
