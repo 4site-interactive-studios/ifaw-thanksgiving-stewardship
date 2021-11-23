@@ -160,6 +160,7 @@ export class IFAWts {
         Rangers: "Rangers",
       },
     };
-    return translations[to][what];
+    if (translations.hasOwnProperty(to)) return translations[to][what];
+    else return translations["en-US"][what];
   }
 }
