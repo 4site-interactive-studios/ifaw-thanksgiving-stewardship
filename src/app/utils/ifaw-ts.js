@@ -129,10 +129,18 @@ export class IFAWts {
       "en-US": {
         To: "To",
         "Choose your recipient": "Choose your recipient",
-        Vets: "Vets",
-        Carers: "Carers",
-        Rescuers: "Rescuers",
-        Rangers: "Rangers",
+        Vets: "Vets & Nurses",
+        Carers: "Wildlife Carers",
+        Rescuers: "Animal Rescuers",
+        Rangers: "Wildlife Rangers",
+      },
+      "en-AU": {
+        To: "To",
+        "Choose your recipient": "Choose your recipient",
+        Vets: "Vets & Nurses",
+        Carers: "Wildlife Carers",
+        Rescuers: "Wildlife Rescuers",
+        Rangers: "Habitat Heroes",
       },
       "de-DE": {
         To: "An",
