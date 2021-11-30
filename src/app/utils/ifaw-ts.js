@@ -19,6 +19,7 @@ export class IFAWts {
   }
   writeEcardList() {
     console.log("IFAWts: writeEcardList");
+    const language = this.getLanguage().toLowerCase();
     let ecardList = document.querySelector("#ecard-list");
     let ecardListHtml = "";
     this.recipientsContainer
@@ -27,7 +28,7 @@ export class IFAWts {
         let recipientName = e.innerText.split("@")[0].trim();
         let recipientClass = recipientName.replace(" ", "-").toLowerCase();
         ecardListHtml += `<li class="card ${recipientClass}">
-        <img src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1720/ts-${recipientClass}.jpg" alt="${recipientName}">
+        <img src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1720/ts-${recipientClass}-${language}.jpg" alt="${recipientName}">
         <span class="recipient-name">${this.translate(
           recipientName.split(" ").slice(-1)
         )}</span>
@@ -61,12 +62,7 @@ export class IFAWts {
     checkBox.checked = !checkBox.checked;
     if (checkBox.checked) {
       clickedElement.classList.add("active");
-      const eCardBackgroundDiv = document.querySelector(".content-wrapper");
-      const img = clickedElement.querySelector("img").src;
-      eCardBackgroundDiv.style.setProperty(
-        "background-image",
-        "url('" + img + "')"
-      );
+      this.changeBackground(clickedElement);
     } else {
       clickedElement.classList.remove("active");
     }
@@ -83,12 +79,7 @@ export class IFAWts {
     const clickedElement =
       document.querySelector("#ecard-list ul").children[randomIndex];
     clickedElement.classList.add("active");
-    const eCardBackgroundDiv = document.querySelector(".content-wrapper");
-    const img = clickedElement.querySelector("img").src;
-    eCardBackgroundDiv.style.setProperty(
-      "background-image",
-      "url('" + img + "')"
-    );
+    this.changeBackground(clickedElement);
   }
   updateSelectedRecipients() {
     const selectedRecipients = document.querySelectorAll(
@@ -118,13 +109,8 @@ export class IFAWts {
       document.querySelector(".en__submit button").disabled = true;
     }
   }
-  translate(what, to = "en-US") {
-    if (
-      window.hasOwnProperty("pageJson") &&
-      window.pageJson.hasOwnProperty("locale")
-    ) {
-      to = window.pageJson.locale;
-    }
+  translate(term) {
+    const language = this.getLanguage();
     const translations = {
       "en-US": {
         To: "To",
@@ -168,7 +154,25 @@ export class IFAWts {
         Rangers: "Rangers",
       },
     };
-    if (translations.hasOwnProperty(to)) return translations[to][what];
-    else return translations["en-US"][what];
+    if (translations.hasOwnProperty(language))
+      return translations[language][term];
+    else return translations["en-US"][term];
+  }
+  getLanguage() {
+    if (
+      window.hasOwnProperty("pageJson") &&
+      window.pageJson.hasOwnProperty("locale")
+    ) {
+      return window.pageJson.locale;
+    }
+    return "en-US";
+  }
+  changeBackground(clickedElement) {
+    const eCardBackgroundDiv = document.querySelector(".content-wrapper");
+    const img = clickedElement.querySelector("img").src;
+    eCardBackgroundDiv.style.setProperty(
+      "background-image",
+      "url('" + img + "')"
+    );
   }
 }
